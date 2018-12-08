@@ -1,0 +1,18 @@
+﻿@implements IDisposable
+@using Microsoft.JSInterop
+
+<textarea id="@_id"></textarea>
+
+@functions {
+    private string _id = $"ck{Guid.NewGuid().ToString().Replace("-", "")}";
+
+    protected async override Task OnAfterRenderAsync()
+    {
+        await JSRuntime.Current.InvokeAsync<bool>("Blazor.CKEditor.initClassicCKEditor", _id);
+    }
+
+    public async void Dispose()
+    {
+        await JSRuntime.Current.InvokeAsync<bool>("Blazor.CKEditor.destroyCKEditor", _id);
+    }
+}

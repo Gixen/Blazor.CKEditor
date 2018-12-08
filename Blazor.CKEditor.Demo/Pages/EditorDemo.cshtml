@@ -1,0 +1,16 @@
+﻿@page "/editordemo"
+@using Blazor.CKEditor
+@addTagHelper *, Blazor.CKEditor
+
+<h1>Blazor.CKEditor demo</h1>
+
+<ClassicCKEditor />
+
+@functions {
+int currentCount = 0;
+
+void IncrementCount()
+{
+    currentCount++;
+}
+}
